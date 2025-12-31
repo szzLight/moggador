@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moggador Simulator</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <div id="attack-gif-overlay"></div>
+
+    <div id="game-wrapper">
+        <aside id="sidebar">
+        <div class="sidebar-header">
+    <h1>MOGGADOR</h1>
+    <span class="version">v0.0.0.0.1 ALPHA</span>
+    <span class="dev-name">DEV: LIGHT</span>
+</div>
+            <div id="aura-container">
+                <p class="label">AURA STATUS</p>
+                <img id="aura-gif" src="assets/gifs/sigma.gif" alt="Aura">
+                <div class="aura-bar-bg">
+                    <div id="aura-fill"></div>
+                </div>
+                <span id="aura-rank">SIGMA</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-btn" onclick="saveGame()">SALVAR JOGO</button>
+                <button class="nav-btn" onclick="loadGame()">CARREGAR</button>
+                <button class="nav-btn" onclick="location.reload()">REINICIAR</button>
+                <button class="nav-btn exit-btn" onclick="exitGame()">SAIR</button>
+            </nav>
+        </aside>
+
+        <main id="game-container">
+            <div id="enemy-ui" style="display: none;">
+                <div class="enemy-frame">
+                    <img id="enemy-img" src="assets/images/betinha.png" alt="Betinha">
+                </div>
+                <span id="enemy-name">BETINHA CRINGE</span>
+                <div class="enemy-bar-bg">
+                    <div id="enemy-hp-fill"></div>
+                </div>
+            </div>
+
+            <div id="dialog-box">
+                <div id="character-name"></div>
+                <div id="text-content"></div>
+                <div id="interactive-content"></div>
+            </div>
+        </main>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="assets/music/2hollis poster boy.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/script.js"></script>
+    <script>
+        
+        function exitGame() {
+            if(confirm("Deseja mesmo sair, Sigma? Seu progresso não salvo será perdido.")) {
+                window.close();
+                
+                alert("Para sair, feche a aba do navegador.");
+            }
+        }
+    </script>
+</body>
+</html>

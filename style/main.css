@@ -1,0 +1,254 @@
+:root {
+    --neon-green: #00ff95;
+    --dark-bg: #0a0a0a;
+    --panel-bg: rgba(20, 20, 20, 0.95);
+    --text-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Estrutura Principal */
+#game-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* Barra Lateral */
+#sidebar {
+    width: 300px;
+    background: #000;
+    border-right: 2px solid var(--neon-green);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 30px;
+    z-index: 20;
+}
+
+.sidebar-header h1 {
+    color: var(--neon-green);
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--neon-green);
+}
+
+.version {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+/* Aura Status */
+#aura-container {
+    text-align: center;
+}
+
+.label {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+#aura-gif {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid var(--neon-green);
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.aura-bar-bg {
+    width: 100%;
+    height: 12px;
+    background: #222;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #444;
+}
+
+#aura-fill {
+    height: 100%;
+    width: 100%;
+    background: var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green);
+    transition: width 0.5s ease-in-out;
+}
+
+#aura-rank {
+    display: block;
+    margin-top: 10px;
+    color: var(--neon-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Navegação Sidebar */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+}
+
+.nav-btn:hover {
+    border-color: var(--neon-green);
+    color: var(--neon-green);
+    background: rgba(0, 255, 149, 0.05);
+}
+
+.exit-btn:hover {
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+/* Área do Jogo Principal */
+#game-container {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Diálogo embaixo */
+    align-items: center;
+    padding: 40px;
+    background-image: radial-gradient(circle, #111 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* UI Inimigo */
+#enemy-ui {
+    position: absolute;
+    top: 50px;
+    text-align: center;
+}
+
+.enemy-frame {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 10px;
+    border: 2px solid #ff4444;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+}
+
+#enemy-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.enemy-bar-bg {
+    width: 200px;
+    height: 8px;
+    background: #222;
+    margin-top: 5px;
+}
+
+#enemy-hp-fill {
+    height: 100%;
+    width: 100%;
+    background: #ff4444;
+    transition: width 0.3s ease;
+}
+
+/* Caixa de Diálogo */
+#dialog-box {
+    width: 100%;
+    max-width: 900px;
+    background: var(--panel-bg);
+    border: 2px solid var(--neon-green);
+    padding: 25px;
+    min-height: 200px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+#character-name {
+    color: var(--neon-green);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-decoration: underline;
+}
+
+#text-content {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Botões e Inputs de Interação */
+#interactive-content {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.action-btn, .choice-btn {
+    background: transparent;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.action-btn:hover, .choice-btn:hover {
+    background: var(--neon-green);
+    color: #000;
+}
+
+input[type="text"] {
+    background: #000;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    padding: 10px;
+    outline: none;
+    flex-grow: 1;
+}
+
+/* Overlay de GIFs de Ataque */
+#attack-gif-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dev-name {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 4px;
+    display: block;
+    color: var(--neon-green);
+    letter-spacing: 1px;
+}
+
+}
